@@ -1,46 +1,59 @@
-.container
-{
-    /* center contents */
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
+.container {
+  /* margin-left: auto;
+  margin-right: auto; */
+  text-align: center;
 }
 
-/* colors for navbar */
-.navbar-default .navbar-brand .blue
-{
-    color: #537fbe;
+.navbar-default .navbar-brand .blue {
+  color: #537fbe;
 }
-.navbar-default .navbar-brand .red
-{
-    color: #ea433b;
+.navbar-default .navbar-brand .red {
+  color: #ea433b;
 }
-.navbar-default .navbar-brand .yellow
-{
-    color: #f5b82e;
+.navbar-default .navbar-brand .yellow {
+  color: #f5b82e;
 }
-.navbar-default .navbar-brand .green
-{
-    color: #2e944b;
+.navbar-default .navbar-brand .green {
+  color: #2e944b;
 }
 
-main .form-control
-{
-    /* center form controls */
-    display: inline-block;
-
-    /* override Bootstrap's 100% width for form controls */
-    width: auto;
+main {
+  margin-top: 60px;
 }
 
-main img
-{
-    /* constrain images on small screens */
-    max-width: 100%;
+main .form-control {
+  display: inline-block;
+  width: auto;
 }
 
-main td
-{
-    /* left-align tables' cells */
-    text-align: left;
+main img {
+  max-width: 100%;
 }
+
+main td {
+  text-align: left;
+}
+
+.navbar {
+  border: 0px;
+}
+
+.navbar-brand {
+  font-size: 25px;
+}
+
+body {
+  height: 100%;
+  background-color: #333;
+  display: flex;
+  justify-content: center;
+  color: #fff;
+  text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
+  box-shadow: inset 8px rgba(0, 0, 0, 0.5);
+}
+/* 
+.container-fluid {
+  border: 1px;
+  outline-style: outset;
+  outline-color: black;
+} */

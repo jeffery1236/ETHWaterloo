@@ -1,25 +1,8 @@
-{% extends 'layout.html' %}
-{% block title %}
-INDEX
+{% extends 'layout.html' %} {% block title %} INDEX {% endblock %} {% block head
+%} HOMEPAGE {% endblock %} {% block body %}
+<div>
+  Global EthTF is a platform enabling investors to purchase Synthetic Asset
+  Tokens that tracks Market ETFs. We believe in markets should be made
+  accessible to everyone, not matter where country you are from.
+</div>
 {% endblock %}
-{% block head %}
-HOMEPAGE
-{% endblock %}
-{% block body %}
-<table>
-    {% for symbol,quantity,price in stockdict%}
-    
-        <tr>{{symbol}}</tr>
-        <tr>{{quantity}}</tr>
-        <tr>{{price}}</tr>
-    total_value+={{price}}
-    grand_total= total_value+cash_total
-
-{% endfor %}
-{{total_value}}
-{{grand_total}}
- 
-    
-</table>
-{% endblock %}
-
