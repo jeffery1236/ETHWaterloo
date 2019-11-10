@@ -18,8 +18,6 @@ if app.config["DEBUG"]:
         response.headers["Pragma"] = "no-cache"
         return response
 
-# custom filter
-app.jinja_env.filters["usd"] = usd
 
 # configure session to use filesystem (instead of signed cookies)
 app.config["SESSION_FILE_DIR"] = mkdtemp()
@@ -43,7 +41,7 @@ def index():
     total_value = 0
     cash_total = db.execute('SELECT cash from users')
     grand_total = 0
-    return render_template('index.html')
+    return redirect(url_for('transact'))
 
 
 @app.route("/transact", methods=["GET", "POST"])
@@ -73,12 +71,7 @@ def test():
     return render_template('test.html')
 
 
-# @app.route("/history")
-# @login_required
-# def history():
-#     history=db.execute('SELECT * from trans  WHERE u_id=:u_id', u_id=session['user_id'])
 
-#     return render_template('history.html',history=history)
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -152,40 +145,5 @@ def register():
     else:
         return render_template('register.html')
 
-
-# @app.route("/sell", methods=["GET", "POST"])
-# @login_required
-# def sell():
-#    if request.method == "POST":
-#         try:
-#             symbol = lookup(request.form.get("stocksymbol"))
-#             shares = int(request.form.get("shares"))
-#         except:
-#             return apology("enter some input")
-
-
-#         if not shares or shares <= 0:
-#             return apology("enter the quantity of shares")
-
-#         stocks_held = db.execute("SELECT SUM(quantity) FROM transactions WHERE u_id=:u_id AND symbol=:symbol;", \
-#         u_id=session['user_id'], symbol=stock['symbol'])
-#         if not stocks_held[0]['SUM(quantity)'] :
-#             return apology("you don't own this stock")
-
-#         # is shares less or = to the stocks held?
-#         if shares > stocks_held[0]['SUM(quantity)']:
-#             return apology("you don't own that many stocks")
-
-
-#         db.execute("INSERT INTO trans(symbol, quantity, price, u_id) VALUES (:symbol, :quantity, :price, :u_id);", \
-#         symbol=stock['symbol'], quantity=-shares, price=stock['price'], u_id=session["user_id"])
-
-#         #
-#         db.execute("UPDATE users SET cash = cash + :total_price WHERE id = :user_id;", total_price=shares*symbol['price'], \
-#         user_id=session["user_id"])
-
-#         return redirect(url_for('index'))
-
-#         return render_template("sell.html")
 if __name__ == "__main__":
     app.run(debug=True, port=5000, host="0.0.0.0")
